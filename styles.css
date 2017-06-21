@@ -1,0 +1,12 @@
+.block_counter .block_counter_numbers {
+    text-align: center;
+}
+
+.block_counter .block_counter_number {
+    background-color: #000;
+    color: #00ff00;
+    font-size: 20px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin-right: 1px;
+}
