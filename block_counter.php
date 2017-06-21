@@ -105,7 +105,7 @@ class block_counter extends block_base {
             $stats->sum++;
         }
 
-        $count = 8107;//$stats->sum;
+        $count = $stats->sum;
 
         if (!empty($block_config->sizepad)) {
             $count = str_pad($count, $block_config->sizepad, '0', STR_PAD_LEFT);
