@@ -23,21 +23,46 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
+
+/**
+ * Main class to manage the counter block.
+ *
+ * @package   block_counter
+ * @copyright 2017 David Herney - cirano
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class block_counter extends block_base {
-    function init() {
+
+    /**
+     * Initial method.
+     */
+    public function init() {
         $this->title = get_string('pluginname', 'block_counter');
     }
 
-    function has_config() {
+    /**
+     * If the block has general configurations.
+     * @return bool True. Has configuration
+     */
+    public function has_config() {
       return true;
     }
 
-    function applicable_formats() {
+    /**
+     * The block can be used in all pages.
+     * @return array Formats
+     */
+    public function applicable_formats() {
         return array('all' => true);
     }
 
-    function get_content() {
-        if ($this->content !== NULL) {
+    /**
+     * The block html content.
+     * @return stdClass text and footer html
+     */
+    public function get_content() {
+        if ($this->content !== null) {
             return $this->content;
         }
 
@@ -45,7 +70,7 @@ class block_counter extends block_base {
 
         $course = $this->page->course;
 
-         if ($course == NULL || !is_object($course) || $course->id == 0){
+        if ($course == null || !is_object($course) || $course->id == 0) {
             $course->id = (-1) * $USER->id;
         }
 
@@ -58,20 +83,18 @@ class block_counter extends block_base {
         }
 
         $ip = getremoteaddr();
-        $block_config = get_config('block_counter');
+        $blockconfig = get_config('block_counter');
 
         // Seconds between a same IP (86400 = 1 day).
-        if (isset($block_config->delay)) {
-            $difference = $block_config->delay;
-        }
-        else {
+        if (isset($blockconfig->delay)) {
+            $difference = $blockconfig->delay;
+        } else {
             $difference = 14400;
         }
 
         if (!isset($SESSION->block_counter[$course->id]['time'])) {
-            $sql = "SELECT MAX(time) AS mintime FROM {$CFG->prefix}block_counter
-                WHERE course = {$course->id}
-                AND ip = '$ip'";
+            $sql = "SELECT MAX(time) AS mintime FROM {block_counter} " .
+                " WHERE course = {$course->id} AND ip = '$ip'";
 
             $time = $DB->get_record_sql($sql);
 
@@ -107,18 +130,18 @@ class block_counter extends block_base {
 
         $count = $stats->sum;
 
-        if (!empty($block_config->sizepad)) {
-            $count = str_pad($count, $block_config->sizepad, '0', STR_PAD_LEFT);
+        if (!empty($blockconfig->sizepad)) {
+            $count = str_pad($count, $blockconfig->sizepad, '0', STR_PAD_LEFT);
         }
 
         $syscontext = context_system::instance();
 
         $text = '<div class="block_counter_numbers" >';
-        for ($i = 0; $i < strlen($count); $i++){
+        for ($i = 0; $i < strlen($count); $i++) {
             $tok = substr ($count, $i, 1);
 
             $configvar = 'number' . $tok;
-            $filepath = $block_config->$configvar;
+            $filepath = $blockconfig->$configvar;
 
             if (empty($filepath)) {
                 $text .= '<span class="block_counter_number">' . $tok . '</span>';
@@ -136,7 +159,7 @@ class block_counter extends block_base {
         $this->content = new stdClass;
         $this->content->text = $text;
 
-        if (!empty($block_config->displaydate)) {
+        if (!empty($blockconfig->displaydate)) {
             $a = strftime(get_string('strftimedate'), $stats->time);
             $this->content->footer = get_string('timecounter', 'block_counter', $a);
         }
@@ -148,6 +171,30 @@ class block_counter extends block_base {
         }
 
         return $this->content;
+    }
+
+    /**
+     * Return the plugin config settings for external functions.
+     *
+     * @return stdClass the configs for both the block instance and plugin
+     * @since Moodle 3.8
+     */
+    public function get_config_for_external() {
+        global $CFG;
+
+        $blockconfig = get_config('block_counter');
+
+        // Return all settings for all users since it is safe (no private keys, etc..).
+        $configs = (object) [
+            'delay' => $blockconfig->delay,
+            'sizepad' => $blockconfig->sizepad,
+            'displaydate' => $blockconfig->displaydate
+        ];
+
+        return (object) [
+            'instance' => new stdClass(),
+            'plugin' => $configs,
+        ];
     }
 
 }

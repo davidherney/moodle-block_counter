@@ -24,12 +24,24 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Used to manage the block setting files.
+ * 
+ * @param stdClass $course course object
+ * @param stdClass $birecord_or_cm block instance record
+ * @param stdClass $context context object
+ * @param string $filearea file area
+ * @param array $args extra arguments
+ * @param bool $forcedownload whether or not force download
+ * @param array $options additional options affecting the file serving
+ * @return bool
+ */
 function block_counter_pluginfile($course, $cm, $context, $filearea, $args,
                                $forcedownload, array $options=array()) {
 
     $entryid = (int) array_shift($args);
 
-    // Fetch file info
+    // Fetch file info.
     $fs = get_file_storage();
     $relativepath = implode('/', $args);
     $fullpath = "/$context->id/block_counter/$filearea/$entryid/$relativepath";

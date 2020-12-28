@@ -15,19 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This file keeps track of upgrades to
- * the blocks system
- *
- * Sometimes, changes between versions involve
- * alterations to database structures and other
- * major things that may break installations.
- *
- * The upgrade function in this file will attempt
- * to perform all the necessary actions to upgrade
- * your older installtion to the current version.
- *
- * If there's something it cannot do itself, it
- * will tell you what you need to do.
+ * Upgrade script for counter block.
  *
  * @since     2.0
  * @package   block_counter
@@ -37,10 +25,13 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+/**
+ * Upgrade script for block_counter.
+ *
+ * @param int $oldversion the version we are upgrading from
+ * @return bool result
+ */
 function xmldb_block_counter_upgrade($oldversion) {
-    global $CFG, $DB;
-
-    $dbman = $DB->get_manager();
 
     return true;
 }
