@@ -160,7 +160,7 @@ class block_counter extends block_base {
         $this->content->text = $text;
 
         if (!empty($blockconfig->displaydate)) {
-            $a = strftime(get_string('strftimedate'), $stats->time);
+            $a = userdate($stats->time, get_string('strftimedate'));
             $this->content->footer = get_string('timecounter', 'block_counter', $a);
         }
 
