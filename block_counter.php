@@ -23,8 +23,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Main class to manage the counter block.
  *
@@ -46,7 +44,7 @@ class block_counter extends block_base {
      * @return bool True. Has configuration
      */
     public function has_config() {
-      return true;
+        return true;
     }
 
     /**

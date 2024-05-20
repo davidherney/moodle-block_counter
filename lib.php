@@ -22,13 +22,11 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Used to manage the block setting files.
- * 
+ *
  * @param stdClass $course course object
- * @param stdClass $birecord_or_cm block instance record
+ * @param stdClass $cm course module object
  * @param stdClass $context context object
  * @param string $filearea file area
  * @param array $args extra arguments
@@ -37,7 +35,7 @@ defined('MOODLE_INTERNAL') || die();
  * @return bool
  */
 function block_counter_pluginfile($course, $cm, $context, $filearea, $args,
-                               $forcedownload, array $options=array()) {
+                               $forcedownload, array $options = []) {
 
     $entryid = (int) array_shift($args);
 
