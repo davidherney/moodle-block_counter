@@ -22,16 +22,15 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Contador de visitas';
 $string['counter:addinstance'] = 'Adicionar un nuevo bloque Contador de visitas';
 $string['counter:myaddinstance'] = 'Adicionar un nuevo bloque Contador de visitas al Área personal';
-
-$string['timecounter'] = 'Inició el {$a}';
 $string['counter_delay'] = 'Espera entre conexiones';
 $string['counter_delay_key'] = "<i>(Valor por defecto 14400 = 4 horas)</i> Espera entre las conexiones de un usuario desde una misma IP para que su visita sea tenida en cuenta en el contador (en segundos). <br />86400 equivale a 1 día";
-$string['counter_sizepad'] = 'Rellenar a la izquierda';
-$string['counter_sizepad_key'] = 'Rellenar el número de visitas, con ceros a la izquierda, hasta alcanzar una determinada longitud.';
 $string['counter_displaydate'] = 'Mostrar fecha de inicio';
 $string['counter_displaydate_key'] = 'Mostrar la fecha en la que inició el contador';
+$string['counter_sizepad'] = 'Rellenar a la izquierda';
+$string['counter_sizepad_key'] = 'Rellenar el número de visitas, con ceros a la izquierda, hasta alcanzar una determinada longitud.';
 $string['number'] = 'Número {$a}';
 $string['number_key'] = 'Archivo de imagen para el número {$a}';
+$string['pluginname'] = 'Contador de visitas';
+$string['timecounter'] = 'Inició el {$a}';

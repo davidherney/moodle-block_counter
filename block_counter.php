@@ -52,7 +52,7 @@ class block_counter extends block_base {
      * @return array Formats
      */
     public function applicable_formats() {
-        return array('all' => true);
+        return ['all' => true];
     }
 
     /**
@@ -73,11 +73,11 @@ class block_counter extends block_base {
         }
 
         if (!isset($SESSION->block_counter)) {
-            $SESSION->block_counter = array();
+            $SESSION->block_counter = [];
         }
 
         if (!isset($SESSION->block_counter[$course->id])) {
-            $SESSION->block_counter[$course->id] = array();
+            $SESSION->block_counter[$course->id] = [];
         }
 
         $ip = getremoteaddr();
@@ -110,7 +110,7 @@ class block_counter extends block_base {
             $increase = true;
         }
 
-        $stats = $DB->get_record('block_counter_stats', array('course' => $course->id));
+        $stats = $DB->get_record('block_counter_stats', ['course' => $course->id]);
 
         if (!$stats) {
             $stats = new stdClass();
@@ -178,7 +178,6 @@ class block_counter extends block_base {
      * @since Moodle 3.8
      */
     public function get_config_for_external() {
-        global $CFG;
 
         $blockconfig = get_config('block_counter');
 
@@ -186,7 +185,7 @@ class block_counter extends block_base {
         $configs = (object) [
             'delay' => $blockconfig->delay,
             'sizepad' => $blockconfig->sizepad,
-            'displaydate' => $blockconfig->displaydate
+            'displaydate' => $blockconfig->displaydate,
         ];
 
         return (object) [

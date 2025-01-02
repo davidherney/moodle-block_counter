@@ -1,7 +1,7 @@
 Block Counter
 ============================
 
-Package tested on: moodle 3.8+ a 4.4+
+Package tested on: moodle 3.8+ a 4.5+
 
 QUICK INSTALL
 ==============
@@ -11,9 +11,13 @@ ABOUT
 =============
 Developed by: David Herney - davidherney at gmail dot com
 GIT: https://github.com/davidherney/moodle-block_counter
+Powered by: https://bambuco.co/
 
 IN VERSION
 =============
+2011081907:
+Compatibility with moodle 3.8+ a 4.5+
+
 2011081906:
 Compatibility with moodle 3.8+ a 4.4+
 
