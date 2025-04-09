@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2011081907;
+$plugin->version   = 2011081907.01;
 $plugin->requires  = 2011120507;        // Requires this Moodle version.
 $plugin->component = 'block_counter'; // Full name of the plugin (used for diagnostics).
 $plugin->maturity = MATURITY_STABLE;

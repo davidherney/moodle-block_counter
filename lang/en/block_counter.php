@@ -33,4 +33,5 @@ $string['counter_sizepad_key'] = 'Pad visits to a certain length with number zer
 $string['number'] = 'Number {$a}';
 $string['number_key'] = 'Image file to number {$a}';
 $string['pluginname'] = 'Visitor Counter';
+$string['privacy:metadata'] = 'The Visitor Counter plugin doesn\'t store any personal data.';
 $string['timecounter'] = 'Started at {$a}';

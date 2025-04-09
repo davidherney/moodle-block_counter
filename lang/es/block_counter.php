@@ -33,4 +33,5 @@ $string['counter_sizepad_key'] = 'Rellenar el número de visitas, con ceros a la
 $string['number'] = 'Número {$a}';
 $string['number_key'] = 'Archivo de imagen para el número {$a}';
 $string['pluginname'] = 'Contador de visitas';
+$string['privacy:metadata'] = 'El plugin Contados de visitas no almacena ningún dato personal.';
 $string['timecounter'] = 'Inició el {$a}';
